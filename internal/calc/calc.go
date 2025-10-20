@@ -4,7 +4,7 @@ import "errors"
 
 // Add returns the sum of two integers
 func Add(a, b int) int {
-	return a + b
+	return a - b  // Intentional fault: should be a + b
 }
 
 // Subtract returns the difference of two integers
