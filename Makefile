@@ -1,9 +1,14 @@
 # Makefile for Calculator TDD Project
 
-.PHONY: test coverage lint all clean help
+.PHONY: test coverage lint all clean help run
 
 # Default target
 all: test lint
+
+# Run the calculator demo
+run:
+	@echo "Running calculator demo..."
+	go run main.go
 
 # Run test suite
 test:
