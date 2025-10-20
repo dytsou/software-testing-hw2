@@ -54,6 +54,28 @@ result, err := calc.Divide(6, 3)  // Returns 2.0, nil
 result, err := calc.Divide(5, 0)  // Returns 0.0, error
 ```
 
+### Running the Calculator
+
+```bash
+# Run the interactive calculator demo
+make run
+
+# Or run directly
+go run main.go
+```
+
+The calculator will prompt you to enter an expression in the format: `a op b` where:
+- `a` and `b` are integers
+- `op` is one of: `+`, `-`, `*`, `/`
+
+Example:
+```
+Calculator
+Enter a op(+,-,*,/) b
+10 + 5
+Result: 15
+```
+
 ### Running Tests
 
 ```bash
@@ -72,6 +94,7 @@ make all
 
 ### Available Make Targets
 
+- `make run` - Run the interactive calculator demo
 - `make test` - Run the test suite
 - `make coverage` - Generate HTML coverage report
 - `make lint` - Run golangci-lint static analysis
