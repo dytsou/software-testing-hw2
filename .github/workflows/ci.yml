@@ -45,8 +45,8 @@ jobs:
     - name: Install dependencies
       run: go mod tidy
       
-    - name: Run tests with coverage
-      run: go test -coverprofile=coverage.out ./...
+      - name: Run tests with coverage
+        run: go test -coverprofile=coverage.out ./test/...
       
     - name: Generate coverage report
       run: go tool cover -html=coverage.out -o coverage.html

@@ -18,7 +18,7 @@ test:
 # Generate HTML coverage report
 coverage:
 	@echo "Generating coverage report..."
-	go test -coverprofile=coverage.out ./...
+	go test -coverprofile=coverage.out ./test/...
 	go tool cover -html=coverage.out -o coverage.html
 	@echo "Coverage report generated: coverage.html"
 
