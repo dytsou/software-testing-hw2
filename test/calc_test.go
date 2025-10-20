@@ -1,6 +1,7 @@
 package calc_test
 
 import (
+	"math"
 	"testing"
 
 	"github.com/dytsou/calc/internal/calc"
@@ -264,7 +265,7 @@ func TestDivide(t *testing.T) {
 				return
 			}
 
-			if result != tc.expected {
+			if math.Abs(result-tc.expected) > 1e-9 {
 				t.Errorf("Expected %f, but got %f", tc.expected, result)
 			}
 		})
