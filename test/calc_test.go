@@ -191,3 +191,82 @@ func TestMultiply(t *testing.T) {
 		})
 	}
 }
+
+func TestDivide(t *testing.T) {
+	// Define test case structure
+	type Params struct {
+		a, b int
+	}
+	type testCase struct {
+		name        string
+		params      Params
+		expected    float64
+		expectedErr bool
+	}
+
+	// Define test case table
+	testCases := []testCase{
+		{
+			name:        "Normal case - positive numbers",
+			params:      Params{a: 6, b: 3},
+			expected:    2.0,
+			expectedErr: false,
+		},
+		{
+			name:        "Normal case - decimal result",
+			params:      Params{a: 7, b: 3},
+			expected:    2.333333333333333,
+			expectedErr: false,
+		},
+		{
+			name:        "Normal case - negative numbers",
+			params:      Params{a: -6, b: -3},
+			expected:    2.0,
+			expectedErr: false,
+		},
+		{
+			name:        "Normal case - positive and negative",
+			params:      Params{a: 6, b: -3},
+			expected:    -2.0,
+			expectedErr: false,
+		},
+		{
+			name:        "Edge case - dividing by one",
+			params:      Params{a: 5, b: 1},
+			expected:    5.0,
+			expectedErr: false,
+		},
+		{
+			name:        "Error case - division by zero",
+			params:      Params{a: 5, b: 0},
+			expected:    0.0,
+			expectedErr: true,
+		},
+	}
+
+	// Execute tests
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			// Execute the function under test
+			result, err := calc.Divide(tc.params.a, tc.params.b)
+
+			// Verify error
+			if tc.expectedErr {
+				if err == nil {
+					t.Errorf("Expected error, but got none")
+				}
+				return
+			}
+
+			// Verify result
+			if err != nil {
+				t.Errorf("Unexpected error: %v", err)
+				return
+			}
+
+			if result != tc.expected {
+				t.Errorf("Expected %f, but got %f", tc.expected, result)
+			}
+		})
+	}
+}
