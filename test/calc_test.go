@@ -271,3 +271,13 @@ func TestDivide(t *testing.T) {
 		})
 	}
 }
+
+func TestAddWithLargeNumbers(t *testing.T) {
+	// This test will fail because it expects a result that the current implementation can't provide
+	result := calc.Add(1000000, 2000000)
+	expected := 3000001  // Intentionally wrong expected value to break the build
+	
+	if result != expected {
+		t.Errorf("Expected %d, but got %d", expected, result)
+	}
+}
