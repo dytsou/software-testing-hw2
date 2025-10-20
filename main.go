@@ -12,7 +12,11 @@ func main() {
 	var a, b int
 	var op string
 	fmt.Println("Enter a op(+,-,*,/) b")
-	fmt.Scanln(&a, &op, &b)
+	_, err := fmt.Scanln(&a, &op, &b)
+	if err != nil {
+		fmt.Printf("Error reading input: %v\n", err)
+		return
+	}
 
 	switch op {
 	case "+":
